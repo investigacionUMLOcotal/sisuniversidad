@@ -34,6 +34,7 @@ $docentes = $docentes->fetchAll();
 <head>
 <title>Notas | Registro </title>
     <meta name="description" content="Registro de Notas UML" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
 </head>

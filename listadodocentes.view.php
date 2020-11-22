@@ -14,6 +14,7 @@ $docentes = $docentes->fetchAll();
 <head>
     <title>Listado de Docentes | Reporte </title>
     <meta name="description" content="Registro de Notas Sis Universidad Martin Lutero Quilali" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
 </head>

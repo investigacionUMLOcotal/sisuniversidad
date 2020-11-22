@@ -8,6 +8,7 @@ permisos($permisos);
 
 <head>
   <title>Inicio | Panel de control </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Registro Sis Universidad Martin Lutero Quilali" />
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <style>
