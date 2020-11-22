@@ -17,43 +17,47 @@ $grados = $grados->fetchAll();
 <html>
 
 <head>
+    <meta charset="UTF-8">
     <title>Inicio | Registro </title>
     <meta name="description" content="Registro  Sis Universidad Martin Lutero Quilali" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- <link rel="stylesheet" href="css/style.css" /> -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    
+<?php
+        include 'includes/nav.php'
+        ?>
     <div class="container">
         <?php
         if (isset($_GET['err'])) {
             echo '<h3 class="alert alert-danger">ERROR: Usuario no autorizado</h3>';
         }
         ?>
-        <?php
-          include 'includes/nav.php'
-        ?>
+       
+        <br>
+        <h4>Registro de docentes</h4>
+        <form method="post" action="procesardocente.php">
+            <div class="form-row">
+                <div class="form-group col-12 col-sm-6">
+                    <label>Nombre docente</label><br>
+                    <input type="text" required name="nombresDoc" maxlength="45" class="form-control">
+                </div>
 
-            <h4>Registro de docentes</h4>
-            <form method="post" class="form" action="procesardocente.php">
-                <div class="form-row">
-                    <div class="form-group  col-12 col-sm-6">
-                        <label>Nombre docente</label><br>
-                        <input  class="form-control" type="text" required name="nombresDoc" maxlength="45">
-                    </div>
-                    <div class="form-group  col-12 col-sm-6">
-                        <label>Apellido docente</label><br>
-                        <input class="form-control" type="text" required name="apellidosDoc" maxlength="45">
-                    </div>
-                    <div class="form-group  col-12 col-sm-6">
-                        <label>No de carnet</label><br>
-                        <input class="form-control" type="text" name="numcarnetDoc">
-                    </div>
 
-                    <fieldset class="form-group">
+                <div class="form-group col-12 col-sm-6">
+                    <label>Apellido docente</label><br>
+                    <input type="text" required name="apellidosDoc" maxlength="45" class="form-control">
+                </div>
+
+                <div class="form-group col-12 col-sm-6">
+                    <label>No de carnet</label><br>
+                    <input type="text" name="numcarnetDoc" class="form-control">
+                </div>
+
+
+                <fieldset class="form-group">
                     <div class="row">
                         <legend class="col-form-label col-sm-2 pt-0">Sexo</legend>
                         <div class="col-12 col-sm-6">
@@ -71,37 +75,28 @@ $grados = $grados->fetchAll();
                             </div>
                         </div>
                 </fieldset>
-
-<!--                     <div class="form-group  col-12 col-sm-6">
-                        <label>Sexo</label><br><input type="radio" name="sexoDoc" value="M"> Masculino
-                        <input type="radio" name="sexoDoc" value="F"> Femenino
-                    </div>
-                </div> -->
-
-                    <br><br>
-                    
-                    <br><br>
-                    <!--mostrando los mensajes que recibe a traves de los parametros en la url-->
-                    <?php
-                    if (isset($_GET['err']))
-                        echo '<span class="error">Error al almacenar el registro</span>';
-                    if (isset($_GET['info']))
-                        echo '<span class="success">Registro almacenado correctamente!</span>';
-                    ?>
             </div>
-            <button type="submit" name="insertarDoc" class="btn btn-success">Guardar</button> <button class="btn btn-danger" type="reset">Limpiar</button> <a class="btn btn-info" href="listadodocentes.view.php">Ver Listado</a>
-            </form>
+            <button type="submit" name="insertarDoc" class="btn btn-success">Guardar</button>
+            <button type="reset" class="btn btn-danger">Limpiar</button>
+            <a class="btn btn-outline-info" href="listadodocentes.view.php">Ver Listado</a>
+            <br><br>
+            <!--mostrando los mensajes que recibe a traves de los parametros en la url-->
             <?php
             if (isset($_GET['err']))
-                echo '<span class="error">Error al guardar</span>';
+                echo '<span class="alert alert-danger">Error al almacenar el registro</span>';
+            if (isset($_GET['info']))
+                echo '<span class="alert alert-success">Registro almacenado correctamente!</span>';
             ?>
-    </div>
-</div>
 
-<?php
+        </form>
+        <?php
+        if (isset($_GET['err']))
+            echo '<span class="error">Error al guardar</span>';
+        ?>
+    </div>
+    <?php
     include 'includes/footer.php';
     ?>
-
 </body>
 
 </html>

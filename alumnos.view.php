@@ -22,6 +22,7 @@ $grados = $grados->fetchAll();
 <html>
 
 <head>
+    <meta charset="UTF-8">
     <title>Inicio | Registro </title>
     <meta name="description" content="Registro  Sis Universidad Martin Lutero Quilali" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -30,20 +31,16 @@ $grados = $grados->fetchAll();
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    <!-- <div class="header">
-    <h1 class="text-center">BIENVENIDO "UML"</h1>
-    <h3></h3>
-  </div>
- -->
+<?php
+        include 'includes/nav.php'
+        ?>
     <div class="container">
         <?php
         if (isset($_GET['err'])) {
             echo '<h3 class="alert alert-danger">ERROR: Usuario no autorizado</h3>';
         }
         ?>
-        <?php
-        include 'includes/nav.php'
-        ?>
+       
         <br>
         <h4>Registro de Alumnos</h4>
         <form method="post" action="procesaralumno.php">
@@ -96,38 +93,38 @@ $grados = $grados->fetchAll();
                         <?php endforeach; ?>
                     </select>
                 </div>
-                
+
 
 
                 <fieldset class="form-group">
                     <div class="row">
                         <legend class="col-form-label col-sm-4 pt-0">Sección</legend>
                         <div class="col-12 col-sm-6">
-                        <?php foreach ($secciones as $x=> $seccion) : ?>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input class="form-check-input" type="radio" name="seccion" id="gridRadios<?=$x?>" value="<?=$seccion['id']?>">
-                                <label class="form-check-label" for="gridRadios<?=$x?>">
-                                <?=$seccion['nombre']?>
-                                </label>
-                            </div>
+                            <?php foreach ($secciones as $x => $seccion) : ?>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input class="form-check-input" type="radio" name="seccion" id="gridRadios<?= $x ?>" value="<?= $seccion['id'] ?>">
+                                    <label class="form-check-label" for="gridRadios<?= $x ?>">
+                                        <?= $seccion['nombre'] ?>
+                                    </label>
+                                </div>
                             <?php endforeach; ?>
                         </div>
                 </fieldset>
-                </div>
+            </div>
 
 
-                <button type="submit" name="insertar" class="btn btn-success">Guardar</button>
-                <button type="reset" class="btn btn-danger">Limpiar</button>
-                <a class="btn btn-info" href="listadoalumnos.view.php">Ver Listado</a>
-                <br><br>
-                <!--mostrando los mensajes que recibe a traves de los parametros en la url-->
-                <?php
-                if (isset($_GET['err']))
-                    echo '<span class="error">Error al almacenar el registro</span>';
-                if (isset($_GET['info']))
-                    echo '<span class="success">Registro almacenado correctamente!</span>';
-                ?>
-            
+            <button type="submit" name="insertar" class="btn btn-success">Guardar</button>
+            <button type="reset" class="btn btn-danger">Limpiar</button>
+            <a class="btn btn-info" href="listadoalumnos.view.php">Ver Listado</a>
+            <br><br>
+            <!--mostrando los mensajes que recibe a traves de los parametros en la url-->
+            <?php
+            if (isset($_GET['err']))
+                echo '<span class="error">Error al almacenar el registro</span>';
+            if (isset($_GET['info']))
+                echo '<span class="success">Registro almacenado correctamente!</span>';
+            ?>
+
         </form>
         <?php
         if (isset($_GET['err']))
