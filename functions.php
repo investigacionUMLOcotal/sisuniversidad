@@ -10,7 +10,6 @@ if ( isset($_COOKIE["activo"]) && isset($_SESSION['username'])) {
 }
 //importamos el archivo que contiene la variable de conexion a la base de datos
 require 'conn/connection.php';
-
 //para verificar que tiene acceso a un archivo
 function permisos($permisos){
     if (!in_array($_SESSION['rol'], $permisos)) {
@@ -25,4 +24,12 @@ function existeNota($id_alumno, $id_materia, $conn){
     //si devuelve una fila significa que la nota ya es
     $nota = $nota->rowCount();
     return $nota;
+}
+
+function contar($table){
+    $conn = $GLOBALS['conn'];
+    $valor = $conn->prepare("select COUNT(*) as total from $table");
+    $valor->execute();
+    $valor = $valor->fetch();
+    return $valor['total'];
 }

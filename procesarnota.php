@@ -16,7 +16,6 @@ else {
 
     //insertar es el nombre del boton guardar que esta en el archivo notas.view.php
     if (isset($_POST['insertar'])){
-
         /*Recorro el numero de estudiantes*/
         for($i = 0; $i < $num_alumnos; $i++){
             $id_alumno = htmlentities($_POST['id_alumno' . $i]);
@@ -28,6 +27,7 @@ else {
                         if($nota){
                             $observaciones = htmlentities($_POST['observaciones' . $i]);
                             $sql_insert = "insert into notas (id_alumno, id_materia, idcarreras, id_docentes, nota,observaciones) values ($id_alumno,$id_materia,$id_carrera,$id_docentes,$nota,'$observaciones')";
+                            $sqls [] = $sql_insert;
                             $result = $conn->query($sql_insert);               
                         }
                     }
@@ -39,16 +39,17 @@ else {
                         $observaciones = htmlentities($_POST['observaciones' . $i]);
                         $sql_query = "update notas set nota = '$nota', observaciones = '$observaciones' where id = ".$id_nota;
                         $result = $conn->query($sql_query);
+                        $sqls [] = $sql_query;
                     }
                 }
 
         }
         if(isset($result)) {
-            header('location:notas.view.php?carrera='.$id_carrera.'&grado='.$id_grado.'&materia='.$id_materia.'&seccion='.$id_seccion.'&docente='.$id_docentes.'&revisar=1&info=1');
+           header('location:notas.view.php?carrera='.$id_carrera.'&grado='.$id_grado.'&materia='.$id_materia.'&seccion='.$id_seccion.'&docente='.$id_docentes.'&revisar=1&info=1');
+           //var_dump(implode("<br>", $sqls));
         } else {
             header('location:notas.view.php?grado='.$id_grado.'&materia='.$id_materia.'&seccion='.$id_seccion.'&revisar=1&err=1');
-        }// validación de registro*/
-
+        }
     //sino boton modificar que esta en el archivo alumnoedit.view.php
     }else if (isset($_POST['modificar'])) {
         //capturamos el id alumnos a modificar
