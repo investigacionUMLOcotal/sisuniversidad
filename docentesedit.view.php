@@ -19,6 +19,7 @@ if(isset($_GET['id'])) {
 <head>
 <title>Inicio | Registro </title>
     <meta name="description" content="Registro  Sis Universidad Martin Lutero Quilali" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="css/style.css" />
 
 </head>

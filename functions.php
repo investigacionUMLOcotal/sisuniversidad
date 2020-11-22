@@ -26,5 +26,3 @@ function existeNota($id_alumno, $id_materia, $conn){
     $nota = $nota->rowCount();
     return $nota;
 }
-
-?>

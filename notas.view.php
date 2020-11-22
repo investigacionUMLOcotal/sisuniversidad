@@ -34,53 +34,43 @@ $docentes = $docentes->fetchAll();
 <head>
 <title>Notas | Registro </title>
     <meta name="description" content="Registro de Notas UML" />
-    <link rel="stylesheet" href="css/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 
 </head>
-<body>
-<div class="header">
-        <h1>Registro - UML " "</h1>
-        <h3>Usuario:  <?php echo $_SESSION["username"] ?></h3>
-</div>
-<nav>
-    <ul>
-        <li class="active"><a href="inicio.view.php">Inicio</a> </li>
-        <li><a href="alumnos.view.php">Registro de Alumnos</a> </li>
-        <li><a href="docentes.view.php">Registro de docentes</a> </li>
-        <li><a href="listadoalumnos.view.php">Listado de Alumnos</a> </li>
-        <li><a href="listadodocentes.view.php">Listado de Docentes</a> </li>
-        <li><a href="notas.view.php">Registro de Notas</a> </li>
-        <li><a href="listadonotas.view.php">Consulta de Notas</a> </li>
-        
-        <li class="right"><a href="logout.php">Salir</a> </li>
 
-    </ul>
-</nav>
-
-<div class="body">
-    <div class="panel">
+<body class="d-flex flex-column min-vh-100">
+  <div class="container">
+    <?php
+    if (isset($_GET['err'])) {
+      echo '<h3 class="alert alert-danger">ERROR: Usuario no autorizado</h3>';
+    }
+    ?>
+    <?php
+    include 'includes/nav.php'
+    ?>
+    <br>
             <h3>Registro y Modificación Notas</h3>
            <?php
            if(!isset($_GET['revisar'])){
                ?>
-
-            <form method="get" class="form" action="notas.view.php">
-                <label>Seleccione las Carreras</label><br>
-                <select name="carrera" required>
+            <form method="get"  action="notas.view.php">
+                <label>Seleccione las carreras</label>
+                <select name="carrera" required class="form-control">
                     <?php foreach ($carreras as $carrera):?>
                         <option value="<?php echo $carrera['idcarrera'] ?>"><?php echo $carrera['nombre'] ?></option>
                     <?php endforeach;?>
                 </select>  
 
                 <label>Seleccione el Docente</label><br>
-                <select name="docente" required>
+                <select name="docente" required  class="form-control">
                     <?php foreach ($docentes as $docente):?>
                         <option value="<?php echo $docente['id'] ?>"><?php echo $docente['nombre_docente'] ?><?php echo " " ?><?php echo $docente['apellido_apellido'] ?></option>
                     <?php endforeach;?>
                 </select>  
 
                 <label>Seleccione la Materia</label><br>
-                <select name="materia" required>
+                <select name="materia" required class="form-control">
                     <?php foreach ($materias as $materia):?>
                         <option value="<?php echo $materia['id'] ?>"><?php echo $materia['nombre'] ?></option>
                     <?php endforeach;?>
@@ -90,24 +80,23 @@ $docentes = $docentes->fetchAll();
 
 
                 <label>Seleccione el Año</label><br>
-                <select name="grado" required>
+                <select name="grado" required class="form-control">
                     <?php foreach ($grados as $grado):?>
                         <option value="<?php echo $grado['id'] ?>"><?php echo $grado['nombre'] ?></option>
                     <?php endforeach;?>
                 </select>
 
-                <br><br>
-
-                <br><br>
-                <label>Seleccione la Sección</label><br>
+                
+                <label>Seleccione la Sección</label>
 
                 <?php foreach ($secciones as $seccion):?>
                     <input type="radio" name="seccion" required value="<?php echo $seccion['id'] ?>">Sección <?php echo $seccion['nombre'] ?>
                 <?php endforeach;?>
 
-                <br><br>
-                <button type="submit" name="revisar" value="1">Ingresar Notas</button> <a class="btn-link" href="listadonotas.view.php">Consultar Notas</a>
-                <br><br>
+                
+                <button class="btn btn-success" type="submit" name="revisar" value="1">Ingresar Notas</button>
+                <a class="btn-link" href="listadonotas.view.php">Consultar Notas</a>
+                
             </form>
         <?php
            }
@@ -239,11 +228,9 @@ $docentes = $docentes->fetchAll();
         ?>
         </div>
 </div>
-
-<footer>
-    <p>Derechos reservados &copy; 2020</p>
-</footer>
-
+<?php
+ include 'includes/footer.php';
+ ?>
 </body>
 
 </html>

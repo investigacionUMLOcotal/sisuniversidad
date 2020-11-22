@@ -1,16 +1,13 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
     require 'conn/connection.php';
-
     $username = htmlspecialchars($_POST['username']);
     $password = htmlspecialchars($_POST['password']);
-
-    $users = $conn->prepare("select username, password, rol from users where username = '".$username."' and password = '".$password."'");
+    $users = $conn->prepare("select username, password, rol from users where username = '" . $username . "' and password = '" . $password . "'");
     $users->execute();
-    if($users->rowCount() > 0){
+    if ($users->rowCount() > 0) {
         $user = $users->fetch();
-        if($user['username'] == $username && $user['password'] == $password){
+        if ($user['username'] == $username && $user['password'] == $password) {
             //existe el usuario y esa contrase;a
             session_start();
             $_SESSION["username"] = $username;
@@ -22,16 +19,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //echo "Credenciales incorrectas";
             header('location:index.php?err=1');
         }
-    }else {
+    } else {
         http_response_code(401);
         header('location:index.php?err=1');
     }
 } else {
     http_response_code(405);
     echo "SOLO SE PUEDE POST";
-
-    // POST_GET
 }
-
-
-
