@@ -28,28 +28,25 @@ $secciones = $secciones->fetchAll();
 <head>
     <title>Notas | Registro </title>
     <meta name="description" content="Registro UML" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 
 </head>
-<body>
-<div class="header">
-    <h1>Registro - UML ""</h1>
-    <h3>Usuario:  <?php echo $_SESSION["username"] ?></h3>
-</div>
-<nav>
-    <ul>
-        <li class="active"><a href="inicio.view.php">Inicio</a> </li>
-        <li><a href="alumnos.view.php">Registro de Alumnos</a> </li>
-        <li><a href="docentes.view.php">Registro de docentes</a> </li>
-        <li><a href="listadoalumnos.view.php">Listado de Alumnos</a> </li>
-        <li><a href="listadodocentes.view.php">Listado de Docentes</a> </li>
-        <li><a href="notas.view.php">Registro de Notas</a> </li>
-        <li><a href="listadonotas.view.php">Consulta de Notas</a> </li>
-        
-        <li class="right"><a href="logout.php">Salir</a> </li>
-
-    </ul>
-</nav>
+<body class="d-flex flex-column min-vh-100">
+  <!-- <div class="header">
+    <h1 class="text-center">BIENVENIDO "UML"</h1>
+    <h3></h3>
+  </div>
+ -->
+  <div class="container">
+    <?php
+    if (isset($_GET['err'])) {
+      echo '<h3 class="alert alert-danger">ERROR: Usuario no autorizado</h3>';
+    }
+    ?>
+    <?php
+    include 'includes/nav.php'
+    ?>
+    <br>
 
 <div class="body">
     <div class="panel">
