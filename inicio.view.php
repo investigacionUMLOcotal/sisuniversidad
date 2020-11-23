@@ -83,7 +83,7 @@ permisos($permisos);
                   </svg>
                   <h2>Docentes</h2>
                   <p><?=contar('docentes')?></p>
-                  <p><a class="btn btn-danger" href="#" role="button">Ver mas &raquo;</a></p>
+                  <p><a class="btn btn-danger" href="listadodocentes.view.php" role="button">Ver mas &raquo;</a></p>
                 </div><!-- /.col-lg-4 -->
                 <div class="col-lg-4">
                   <svg class="bd-placeholder-img rounded-circle" width="100" height="100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Estudiantes">
@@ -92,7 +92,7 @@ permisos($permisos);
                   </svg>
                   <h2>Estudiantes</h2>
                   <p><?=contar('alumnos')?></p>
-                  <p><a class="btn btn-primary" href="#" role="button">Ver mas &raquo;</a></p>
+                  <p><a class="btn btn-primary" href="listadoalumnos.view.php" role="button">Ver mas &raquo;</a></p>
                 </div><!-- /.col-lg-4 -->
               </div><!-- /.row -->
             </div>
