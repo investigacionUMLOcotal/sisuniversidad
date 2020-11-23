@@ -19,8 +19,9 @@
               Reportes
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="listadoalumnos.view.php">Lista Alumnos</a>
-              <a class="dropdown-item" href="listadodocentes.view.php">Lista Docentes</a>
+              <a class="dropdown-item" href="listadoalumnos.view.php">Lista de Alumnos</a>
+              <a class="dropdown-item" href="listadodocentes.view.php">Lista de Docentes</a>
+              <a class="dropdown-item" href="listadonotas.view.php">Lista de Notas</a>
             </div>
           </li>
           <li class="nav-item dropdown">
