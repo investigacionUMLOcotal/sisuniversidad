@@ -12,7 +12,22 @@
     <script>
     $(() => {
      let table =  $("table").DataTable({
-        dom: 'fBrtip',
+       language:{
+        "lengthMenu": "Ver _MENU_ Archivos por Página",
+        "infoFiltered": "(Filtrado de un Total de _MAX_ Registros)",
+        "zeroRecords": "Lo sentimos, no tenemos resultados",
+        "info": "Mostrando Página _PAGE_ de _PAGES_",
+        "infoEmpty": "Sin Registros para Mostrar",
+
+         "paginate": {
+                       "previous": "Anterior",
+                       "next": "Siguiente"
+                   },
+                   "search": "Buscar",
+
+
+       },
+       dom: 'fBrtip',
         buttons: [
           {
            extend : 'excel',
@@ -27,8 +42,21 @@
           {
            extend : 'print',
            text: 'Imprimir',
-           className: 'btn btn-outline-primary'
-          }
+           className: 'btn btn-outline-primary',
+           customize: function(win) {
+                        $(win.document.body)
+                            .css('font-size', '12pt')
+                            .prepend(
+                                '<img src="https://www.mzdevocotal.com/sisumlquilali/imagenes/logoUML.png" style="position:absolute; top:0; left:0; opacity:0.1; width:400px; height:100px;" />'
+                            );
+
+                        $(win.document.body).find('table')
+                            .addClass('compact')
+                            .css('font-size', 'inherit');
+                    }
+
+          },
+          
           
         ]
     } );
